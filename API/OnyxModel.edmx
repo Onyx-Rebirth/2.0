@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OnyxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="CardNo" />
+            <PropertyRef Name="TapDateTime" />
+          </Key>
+          <Property Name="CardNo" Type="int" Nullable="false" />
+          <Property Name="ScannerId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TapDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardNo" />
+          </Key>
+          <Property Name="CardNo" Type="int" Nullable="false" />
+          <Property Name="UID" Type="int" />
+        </EntityType>
+        <EntityType Name="classgroup">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="int" Nullable="false" />
+          <Property Name="dayname" Type="nvarchar" MaxLength="10" />
+          <Property Name="start_time" Type="time" Precision="7" />
+          <Property Name="end_time" Type="time" Precision="7" />
+          <Property Name="teacher_uid" Type="int" />
+        </EntityType>
+        <EntityType Name="Enrolment">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="CID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="RoomNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Placement">
+          <Key>
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="ScannerId" />
+            <PropertyRef Name="PlacedDateTime" />
+          </Key>
+          <Property Name="RoomNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ScannerId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PlacedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="RemovedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Scanner">
+          <Key>
+            <PropertyRef Name="ScannerId" />
+          </Key>
+          <Property Name="ScannerId" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="int" Nullable="false" />
+          <Property Name="SessionDate" Type="date" />
+          <Property Name="CID" Type="int" />
+          <Property Name="RoomNo" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentid" Type="nvarchar" MaxLength="50" />
+          <Property Name="staffid" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'onyx2.dbo.CardList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CardList">
+          <Key>
+            <PropertyRef Name="CardNo" />
+          </Key>
+          <Property Name="CardNo" Type="int" Nullable="false" />
+          <Property Name="UID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'onyx2.dbo.ClassGroupList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ClassGroupList">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="int" Nullable="false" />
+          <Property Name="dayname" Type="nvarchar" MaxLength="10" />
+          <Property Name="start_time" Type="time" Precision="7" />
+          <Property Name="end_time" Type="time" Precision="7" />
+          <Property Name="teacher_uid" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'onyx2.dbo.LocationList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LocationList">
+          <Key>
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="RoomNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'onyx2.dbo.SessionList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SessionList">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="int" Nullable="false" />
+          <Property Name="SessionDate" Type="date" />
+          <Property Name="CID" Type="int" />
+          <Property Name="RoomNo" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'onyx2.dbo.UserList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserList">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="studentid" Type="nvarchar" MaxLength="50" />
+          <Property Name="staffid" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'onyx2.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_attendance_card">
+          <End Role="Card" Type="Self.Card" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card">
+              <PropertyRef Name="CardNo" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="CardNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_attendance_location">
+          <End Role="Scanner" Type="Self.Scanner" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scanner">
+              <PropertyRef Name="ScannerId" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="ScannerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_card_user">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_classgroup_user">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="classgroup" Type="Self.classgroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="classgroup">
+              <PropertyRef Name="teacher_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_enrol_classgroup">
+          <End Role="classgroup" Type="Self.classgroup" Multiplicity="1" />
+          <End Role="Enrolment" Type="Self.Enrolment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classgroup">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="Enrolment">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_enrol_user">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Enrolment" Type="Self.Enrolment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="Enrolment">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLACEMENT_LOCATION">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Placement" Type="Self.Placement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="Placement">
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLACEMENT_SCANNER">
+          <End Role="Scanner" Type="Self.Scanner" Multiplicity="1" />
+          <End Role="Placement" Type="Self.Placement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scanner">
+              <PropertyRef Name="ScannerId" />
+            </Principal>
+            <Dependent Role="Placement">
+              <PropertyRef Name="ScannerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_session_classgroup">
+          <End Role="classgroup" Type="Self.classgroup" Multiplicity="0..1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classgroup">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_session_location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OnyxModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="classgroup" EntityType="Self.classgroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enrolment" EntityType="Self.Enrolment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Placement" EntityType="Self.Placement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Scanner" EntityType="Self.Scanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardList" EntityType="Self.CardList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CardList].[CardNo] AS [CardNo], 
+    [CardList].[UID] AS [UID]
+    FROM [dbo].[CardList] AS [CardList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ClassGroupList" EntityType="Self.ClassGroupList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ClassGroupList].[CID] AS [CID], 
+    [ClassGroupList].[dayname] AS [dayname], 
+    [ClassGroupList].[start_time] AS [start_time], 
+    [ClassGroupList].[end_time] AS [end_time], 
+    [ClassGroupList].[teacher_uid] AS [teacher_uid]
+    FROM [dbo].[ClassGroupList] AS [ClassGroupList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LocationList" EntityType="Self.LocationList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LocationList].[RoomNo] AS [RoomNo]
+    FROM [dbo].[LocationList] AS [LocationList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SessionList" EntityType="Self.SessionList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SessionList].[SessionId] AS [SessionId], 
+    [SessionList].[SessionDate] AS [SessionDate], 
+    [SessionList].[CID] AS [CID], 
+    [SessionList].[RoomNo] AS [RoomNo]
+    FROM [dbo].[SessionList] AS [SessionList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserList" EntityType="Self.UserList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserList].[uid] AS [uid], 
+    [UserList].[fname] AS [fname], 
+    [UserList].[lname] AS [lname], 
+    [UserList].[email] AS [email], 
+    [UserList].[mobile] AS [mobile], 
+    [UserList].[studentid] AS [studentid], 
+    [UserList].[staffid] AS [staffid]
+    FROM [dbo].[UserList] AS [UserList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_attendance_card" Association="Self.fk_attendance_card">
+            <End Role="Card" EntitySet="Card" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="fk_attendance_location" Association="Self.fk_attendance_location">
+            <End Role="Scanner" EntitySet="Scanner" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="fk_card_user" Association="Self.fk_card_user">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="fk_classgroup_user" Association="Self.fk_classgroup_user">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="classgroup" EntitySet="classgroup" />
+          </AssociationSet>
+          <AssociationSet Name="fk_enrol_classgroup" Association="Self.fk_enrol_classgroup">
+            <End Role="classgroup" EntitySet="classgroup" />
+            <End Role="Enrolment" EntitySet="Enrolment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_enrol_user" Association="Self.fk_enrol_user">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Enrolment" EntitySet="Enrolment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLACEMENT_LOCATION" Association="Self.FK_PLACEMENT_LOCATION">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Placement" EntitySet="Placement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLACEMENT_SCANNER" Association="Self.FK_PLACEMENT_SCANNER">
+            <End Role="Scanner" EntitySet="Scanner" />
+            <End Role="Placement" EntitySet="Placement" />
+          </AssociationSet>
+          <AssociationSet Name="fk_session_classgroup" Association="Self.fk_session_classgroup">
+            <End Role="classgroup" EntitySet="classgroup" />
+            <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
+          <AssociationSet Name="fk_session_location" Association="Self.fk_session_location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnyxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="CardNo" />
+            <PropertyRef Name="TapDateTime" />
+          </Key>
+          <Property Name="CardNo" Type="Int32" Nullable="false" />
+          <Property Name="ScannerId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TapDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Card" Relationship="Self.fk_attendance_card" FromRole="Attendance" ToRole="Card" />
+          <NavigationProperty Name="Scanner" Relationship="Self.fk_attendance_location" FromRole="Attendance" ToRole="Scanner" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardNo" />
+          </Key>
+          <Property Name="CardNo" Type="Int32" Nullable="false" />
+          <Property Name="UID" Type="Int32" />
+          <NavigationProperty Name="Attendances" Relationship="Self.fk_attendance_card" FromRole="Card" ToRole="Attendance" />
+          <NavigationProperty Name="User" Relationship="Self.fk_card_user" FromRole="Card" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="classgroup">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="Int32" Nullable="false" />
+          <Property Name="dayname" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="start_time" Type="Time" Precision="7" />
+          <Property Name="end_time" Type="Time" Precision="7" />
+          <Property Name="teacher_uid" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.fk_classgroup_user" FromRole="classgroup" ToRole="Users" />
+          <NavigationProperty Name="Sessions" Relationship="Self.fk_session_classgroup" FromRole="classgroup" ToRole="Session" />
+          <NavigationProperty Name="Users" Relationship="Self.Enrolment" FromRole="classgroup" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="RoomNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Placements" Relationship="Self.FK_PLACEMENT_LOCATION" FromRole="Location" ToRole="Placement" />
+          <NavigationProperty Name="Sessions" Relationship="Self.fk_session_location" FromRole="Location" ToRole="Session" />
+        </EntityType>
+        <EntityType Name="Placement">
+          <Key>
+            <PropertyRef Name="RoomNo" />
+            <PropertyRef Name="ScannerId" />
+            <PropertyRef Name="PlacedDateTime" />
+          </Key>
+          <Property Name="RoomNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ScannerId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlacedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RemovedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_PLACEMENT_LOCATION" FromRole="Placement" ToRole="Location" />
+          <NavigationProperty Name="Scanner" Relationship="Self.FK_PLACEMENT_SCANNER" FromRole="Placement" ToRole="Scanner" />
+        </EntityType>
+        <EntityType Name="Scanner">
+          <Key>
+            <PropertyRef Name="ScannerId" />
+          </Key>
+          <Property Name="ScannerId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Attendances" Relationship="Self.fk_attendance_location" FromRole="Scanner" ToRole="Attendance" />
+          <NavigationProperty Name="Placements" Relationship="Self.FK_PLACEMENT_SCANNER" FromRole="Scanner" ToRole="Placement" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="SessionDate" Type="DateTime" Precision="0" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="RoomNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="classgroup" Relationship="Self.fk_session_classgroup" FromRole="Session" ToRole="classgroup" />
+          <NavigationProperty Name="Location" Relationship="Self.fk_session_location" FromRole="Session" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="staffid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cards" Relationship="Self.fk_card_user" FromRole="Users" ToRole="Card" />
+          <NavigationProperty Name="classgroups" Relationship="Self.fk_classgroup_user" FromRole="Users" ToRole="classgroup" />
+          <NavigationProperty Name="classgroups1" Relationship="Self.Enrolment" FromRole="Users" ToRole="classgroup" />
+        </EntityType>
+        <EntityType Name="CardList">
+          <Key>
+            <PropertyRef Name="CardNo" />
+          </Key>
+          <Property Name="CardNo" Type="Int32" Nullable="false" />
+          <Property Name="UID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ClassGroupList">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="Int32" Nullable="false" />
+          <Property Name="dayname" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="start_time" Type="Time" Precision="7" />
+          <Property Name="end_time" Type="Time" Precision="7" />
+          <Property Name="teacher_uid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LocationList">
+          <Key>
+            <PropertyRef Name="RoomNo" />
+          </Key>
+          <Property Name="RoomNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SessionList">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="SessionDate" Type="DateTime" Precision="0" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="RoomNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserList">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="studentid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="staffid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="fk_attendance_card">
+          <End Role="Card" Type="Self.Card" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card">
+              <PropertyRef Name="CardNo" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="CardNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_attendance_location">
+          <End Role="Scanner" Type="Self.Scanner" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scanner">
+              <PropertyRef Name="ScannerId" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="ScannerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_card_user">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_classgroup_user">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="classgroup" Type="Self.classgroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="classgroup">
+              <PropertyRef Name="teacher_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_session_classgroup">
+          <End Role="classgroup" Type="Self.classgroup" Multiplicity="0..1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classgroup">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLACEMENT_LOCATION">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Placement" Type="Self.Placement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="Placement">
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_session_location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="RoomNo" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="RoomNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLACEMENT_SCANNER">
+          <End Role="Scanner" Type="Self.Scanner" Multiplicity="1" />
+          <End Role="Placement" Type="Self.Placement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Scanner">
+              <PropertyRef Name="ScannerId" />
+            </Principal>
+            <Dependent Role="Placement">
+              <PropertyRef Name="ScannerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Enrolment">
+          <End Role="classgroup" Type="Self.classgroup" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="onyx2Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+          <EntitySet Name="Cards" EntityType="Self.Card" />
+          <EntitySet Name="classgroups" EntityType="Self.classgroup" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Placements" EntityType="Self.Placement" />
+          <EntitySet Name="Scanners" EntityType="Self.Scanner" />
+          <EntitySet Name="Sessions" EntityType="Self.Session" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="CardLists" EntityType="Self.CardList" />
+          <EntitySet Name="ClassGroupLists" EntityType="Self.ClassGroupList" />
+          <EntitySet Name="LocationLists" EntityType="Self.LocationList" />
+          <EntitySet Name="SessionLists" EntityType="Self.SessionList" />
+          <EntitySet Name="UserLists" EntityType="Self.UserList" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="fk_attendance_card" Association="Self.fk_attendance_card">
+            <End Role="Card" EntitySet="Cards" />
+            <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="fk_attendance_location" Association="Self.fk_attendance_location">
+            <End Role="Scanner" EntitySet="Scanners" />
+            <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="fk_card_user" Association="Self.fk_card_user">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Card" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="fk_classgroup_user" Association="Self.fk_classgroup_user">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="classgroup" EntitySet="classgroups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_session_classgroup" Association="Self.fk_session_classgroup">
+            <End Role="classgroup" EntitySet="classgroups" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLACEMENT_LOCATION" Association="Self.FK_PLACEMENT_LOCATION">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Placement" EntitySet="Placements" />
+          </AssociationSet>
+          <AssociationSet Name="fk_session_location" Association="Self.fk_session_location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLACEMENT_SCANNER" Association="Self.FK_PLACEMENT_SCANNER">
+            <End Role="Scanner" EntitySet="Scanners" />
+            <End Role="Placement" EntitySet="Placements" />
+          </AssociationSet>
+          <AssociationSet Name="Enrolment" Association="Self.Enrolment">
+            <End Role="classgroup" EntitySet="classgroups" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnyxModelStoreContainer" CdmEntityContainer="onyx2Entities1">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="OnyxModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="OnyxModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="ScannerId" ColumnName="ScannerId" />
+                <ScalarProperty Name="TapDateTime" ColumnName="TapDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="OnyxModel.Card">
+              <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classgroups">
+            <EntityTypeMapping TypeName="OnyxModel.classgroup">
+              <MappingFragment StoreEntitySet="classgroup">
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="dayname" ColumnName="dayname" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="teacher_uid" ColumnName="teacher_uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="OnyxModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Placements">
+            <EntityTypeMapping TypeName="OnyxModel.Placement">
+              <MappingFragment StoreEntitySet="Placement">
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="ScannerId" ColumnName="ScannerId" />
+                <ScalarProperty Name="PlacedDateTime" ColumnName="PlacedDateTime" />
+                <ScalarProperty Name="RemovedDateTime" ColumnName="RemovedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scanners">
+            <EntityTypeMapping TypeName="OnyxModel.Scanner">
+              <MappingFragment StoreEntitySet="Scanner">
+                <ScalarProperty Name="ScannerId" ColumnName="ScannerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="OnyxModel.Session">
+              <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="SessionDate" ColumnName="SessionDate" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="OnyxModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="staffid" ColumnName="staffid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardLists">
+            <EntityTypeMapping TypeName="OnyxModel.CardList">
+              <MappingFragment StoreEntitySet="CardList">
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassGroupLists">
+            <EntityTypeMapping TypeName="OnyxModel.ClassGroupList">
+              <MappingFragment StoreEntitySet="ClassGroupList">
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="dayname" ColumnName="dayname" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="teacher_uid" ColumnName="teacher_uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocationLists">
+            <EntityTypeMapping TypeName="OnyxModel.LocationList">
+              <MappingFragment StoreEntitySet="LocationList">
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionLists">
+            <EntityTypeMapping TypeName="OnyxModel.SessionList">
+              <MappingFragment StoreEntitySet="SessionList">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="SessionDate" ColumnName="SessionDate" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLists">
+            <EntityTypeMapping TypeName="OnyxModel.UserList">
+              <MappingFragment StoreEntitySet="UserList">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="staffid" ColumnName="staffid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="OnyxModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Enrolment" TypeName="OnyxModel.Enrolment" StoreEntitySet="Enrolment">
+            <EndProperty Name="classgroup">
+              <ScalarProperty Name="CID" ColumnName="CID" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="uid" ColumnName="UID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

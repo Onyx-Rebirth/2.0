@@ -73,6 +73,8 @@
     <Build Include="Sequences\seq_user.sql" />
     <Build Include="Sequences\seq_session.sql" />
     <Build Include="Sequences\seq_classgroup.sql" />
+    <Build Include="Tables\Scanner.sql" />
+    <Build Include="Tables\Placement.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Onyx.refactorlog" />

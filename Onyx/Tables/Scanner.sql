@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Scanner]
+(
+	[ScannerId] NVARCHAR(100) NOT NULL PRIMARY KEY,
+)
