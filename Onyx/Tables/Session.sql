@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Session]
 (
-	[SessionId] INT NOT NULL PRIMARY KEY, 
+	[SessionId] INT DEFAULT(NEXT VALUE FOR DBO.seq_session) NOT NULL PRIMARY KEY, 
     [SessionDate] DATE NULL, 
     [CID] INT NULL,
 	[RoomNo] NVARCHAR(10) NULL, 

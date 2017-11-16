@@ -57,17 +57,40 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="Views" />
+    <Folder Include="Sequences" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Users.sql" />
-    <Build Include="classgroup.sql" />
-    <Build Include="Card.sql" />
-    <Build Include="Location.sql" />
-    <Build Include="Enrolment.sql" />
-    <Build Include="Session.sql" />
-    <Build Include="Attendance.sql" />
+    <Build Include="Tables\Attendance.sql" />
+    <Build Include="Tables\Card.sql" />
+    <Build Include="Tables\classgroup.sql" />
+    <Build Include="Tables\Enrolment.sql" />
+    <Build Include="Tables\Location.sql" />
+    <Build Include="Tables\Session.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Views\CardList.sql" />
+    <Build Include="Sequences\seq_user.sql" />
+    <Build Include="Sequences\seq_session.sql" />
+    <Build Include="Sequences\seq_classgroup.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Onyx.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Views\ClassGroupList.sql" />
+    <Build Include="Views\LocationList.sql" />
+    <Build Include="Views\SessionList.sql" />
+    <Build Include="Views\UserList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.TestData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DeployTestData">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>

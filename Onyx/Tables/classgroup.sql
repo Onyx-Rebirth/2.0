@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[classgroup]
 (
-	[CID] INT NOT NULL PRIMARY KEY, 
+	[CID] INT DEFAULT(NEXT VALUE FOR DBO.seq_classgroup) NOT NULL PRIMARY KEY, 
     [dayname] NVARCHAR(10) NULL, 
     [start_time] TIME NULL, 
     [end_time] TIME NULL, 
