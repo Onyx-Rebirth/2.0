@@ -20,6 +20,9 @@
     <Content Include="process.json" />
     <Content Include="README.md" />
     <Compile Include="index.js" />
+    <Content Include="SATClient\web\404.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="SATClient\web\home.html">
       <SubType>Code</SubType>
     </Content>
