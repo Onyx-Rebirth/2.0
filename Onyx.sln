@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SATDatabase", "Onyx\SATDatabase.sqlproj", "{AF694B02-F98F-40D6-B3B1-84E36C53B476}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "SATServer", "NodeServer\SATServer.njsproj", "{FBDE73EC-00CA-4A04-90CD-6F67059A894B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{B5FF8EB8-CA5E-40C3-B553-CAA906200112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Tests", "Onyx\API.Tests\API.Tests.csproj", "{0B8ABB4D-03B0-4F8D-9CAC-7D22FC23569F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF694B02-F98F-40D6-B3B1-84E36C53B476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF694B02-F98F-40D6-B3B1-84E36C53B476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF694B02-F98F-40D6-B3B1-84E36C53B476}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AF694B02-F98F-40D6-B3B1-84E36C53B476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF694B02-F98F-40D6-B3B1-84E36C53B476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF694B02-F98F-40D6-B3B1-84E36C53B476}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FBDE73EC-00CA-4A04-90CD-6F67059A894B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBDE73EC-00CA-4A04-90CD-6F67059A894B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBDE73EC-00CA-4A04-90CD-6F67059A894B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBDE73EC-00CA-4A04-90CD-6F67059A894B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5FF8EB8-CA5E-40C3-B553-CAA906200112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5FF8EB8-CA5E-40C3-B553-CAA906200112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5FF8EB8-CA5E-40C3-B553-CAA906200112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5FF8EB8-CA5E-40C3-B553-CAA906200112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B8ABB4D-03B0-4F8D-9CAC-7D22FC23569F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B8ABB4D-03B0-4F8D-9CAC-7D22FC23569F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B8ABB4D-03B0-4F8D-9CAC-7D22FC23569F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B8ABB4D-03B0-4F8D-9CAC-7D22FC23569F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {028E4792-3519-4297-8D1B-E4DF8643A70E}
+	EndGlobalSection
+EndGlobal

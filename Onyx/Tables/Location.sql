@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Location]
+(
+	[RoomNo] NVARCHAR(10) NOT NULL PRIMARY KEY, 
+)
