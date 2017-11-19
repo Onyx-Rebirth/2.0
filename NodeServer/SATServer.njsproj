@@ -21,6 +21,10 @@
     <Compile Include="index.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SATClient\public\Nothing.js" />
+    <Compile Include="SATClient\routes\Nothing.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SATClient\web\home.js">
       <SubType>Code</SubType>
     </Compile>
