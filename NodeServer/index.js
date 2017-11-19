@@ -19,8 +19,9 @@ let port = process.env.PORT || 80;
 let server = app.listen(port);
 console.log("Server running at http://localhost:%d", port);
 
-// Routes
+// Routes. To create more routes, copy & paste first line. First argument is the web address, second is the html file name.
 getRoute('/', 'home.html');
+
 
 function getRoute(route, path) {
     router.get(route, function (req, res, next) {
