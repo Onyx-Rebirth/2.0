@@ -12,14 +12,21 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <NodeExePath>H:\NodeInstall\node-v8.9.1-win-x64\node.exe</NodeExePath>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="index.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SATClient\web\home.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="package.json" />
     <Content Include="process.json" />
-    <Content Include="README.md" />
-    <Compile Include="index.js" />
+    <Compile Include="indexOld.js" />
     <Content Include="SATClient\web\404.html">
       <SubType>Code</SubType>
     </Content>
