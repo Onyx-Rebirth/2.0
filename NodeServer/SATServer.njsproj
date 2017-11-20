@@ -28,6 +28,9 @@
     <Compile Include="SATClient\web\home.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TestModule.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="package.json" />
     <Content Include="process.json" />
     <Compile Include="index.js" />

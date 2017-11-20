@@ -1,3 +1,4 @@
+let t = require('./TestModule.js');
 let express = require('express');
 let app = express();
 let server = require('http').createServer(app);
@@ -18,5 +19,7 @@ io.on('connection', function (socket) {
         io.emit('cake','a');
     });
 });
+
+t.test();
 
 server.listen(port);
