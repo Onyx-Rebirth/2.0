@@ -2,8 +2,8 @@
 let express = require('express');
 let fs = require('fs');
 let bodyParser = require('body-parser');
-let server = require('http').createServer(app);
-let io = require('socket.io')(server);
+let http = require('http');
+let io = require('socket.io');
 
 let app = express();    // Start server
 let router = express.Router();  // Create router instance
@@ -32,9 +32,6 @@ function getRoute(route, path) {
 
 
 //Socket testing
-app.get('/', function (req, res, next) {
-    res.sendFile(__dirname + '/SATClient/web/home.html');
-});
 
 io.on('connection', function (socket) {
     console.log('Client has connected; ' + socket.id);
@@ -43,31 +40,6 @@ io.on('connection', function (socket) {
         console.log("[" + socket.id + "]; " + data);
     });
 });
-
-
-//POST
-try {
-	app.post("/submit", function (request, response) {
-
-		response.writeHead(200, { "Content-Type": "text/plain" });
-		response.end("Submitted post");
-
-	});
-}
-catch (ex) { console.log(ex.toString()); }
-
-//GET
-try {
-	app.get("/submit", function (request, response) {
-
-		response.writeHead(200, { "Content-Type": "text/plain" });
-		response.end("Submitted get");
-
-	});
-}
-catch (ex) { console.log(ex.toString()); }
-
-
 
 
 // --DO NOT PUT STUFF PAST HERE--
