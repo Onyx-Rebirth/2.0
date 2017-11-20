@@ -20,6 +20,9 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Compile Include="SATClient\public\Nothing.js" />
+    <Compile Include="SATClient\public\SocketCom.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SATClient\routes\Nothing.js">
       <SubType>Code</SubType>
     </Compile>

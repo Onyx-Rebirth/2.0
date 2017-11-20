@@ -7,8 +7,7 @@
 </head>
 <body>
 	<h1>Home</h1>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/home.js">
+    <script src="../public/SocketCom.js">        
         /*
         	<form action="submit" method="post">
 		<input name="inputPost" id="i" />
@@ -19,6 +18,16 @@
 		<input type="submit" name="Submit get" id="submit" value="Submit get" />
 	</form>
         */
+    </script>
+    <script>
+        sendMessage('potato', "Yay! Dedicated files!");
+        listen('one', function () {
+            console.log("Got one");
+        });
+
+        listen('two', function () {
+            console.log("Got two");
+        });
     </script>
 </body>
 </html>
