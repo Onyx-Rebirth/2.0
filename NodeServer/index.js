@@ -5,7 +5,7 @@ let io = require('socket.io')(server);
 let port = 80;
 
 app.use(express.static(__dirname + '/node_modules'));
-app.use(express.static(__dirname + '/SATClient/web'));
+app.use(express.static(__dirname + '/SATClient'));
 app.get('/', function (req, res, next) {
     res.sendFile(__dirname + '/SATClient/web/home.html');
 });
@@ -18,4 +18,16 @@ io.on('connection', function(socket) {
     });
 });
 
-server.listen(port);  
+server.listen(port);
+
+temp();
+
+function temp() {
+    setTimeout(function () {
+        console.log("ONE");
+        io.emit('one', 'a');
+        console.log("TWO");
+        io.emit('two', 'b');
+        temp();
+    }, 1000);
+}
