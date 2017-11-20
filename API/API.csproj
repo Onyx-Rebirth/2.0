@@ -199,8 +199,14 @@
     <Compile Include="ClassGroupList.cs">
       <DependentUpon>OnyxModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CardsController.cs" />
+    <Compile Include="Controllers\ClassGroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\PlacementsController.cs" />
+    <Compile Include="Controllers\ScannersController.cs" />
+    <Compile Include="Controllers\SessionsController.cs" />
     <Compile Include="Controllers\UserListsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
