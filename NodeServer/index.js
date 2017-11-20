@@ -21,7 +21,7 @@ app.use(express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/SATClient'));
 //Location of the landing page
 addRoute('home');
-addRoute('Users/L');
+addRoute('Users/:id');
 
 function addRoute(dir) {
     let s = dir.split('/');
@@ -30,7 +30,7 @@ function addRoute(dir) {
     console.log(s);
     console.log(dir.substring(0, dir.length - s.length - 1));
     router.get('/' + dir.substring(0, dir.length - s.length - 1), function (req, res) {
-        res.sendFile(__dirname + '/SATClient/web/' + dir + '.html');
+        res.sendFile(__dirname + '/SATClient/web/template.html');
     });
 }
 
