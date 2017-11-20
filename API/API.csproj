@@ -199,8 +199,14 @@
     <Compile Include="ClassGroupList.cs">
       <DependentUpon>OnyxModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CardsController.cs" />
+    <Compile Include="Controllers\ClassGroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\PlacementsController.cs" />
+    <Compile Include="Controllers\ScannersController.cs" />
+    <Compile Include="Controllers\SessionsController.cs" />
     <Compile Include="Controllers\UserListsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -302,6 +308,7 @@
     <Content Include="OnyxModel.edmx.diagram">
       <DependentUpon>OnyxModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Onyx2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
