@@ -19,20 +19,23 @@ let router = express.Router();
 //Location of files the client uses
 app.use(express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/SATClient'));
-//Location of the landing page
-addRoute('home');
-addRoute('Users/:id');
 
+router.use(function (req, res) {
+    res.sendFile(__dirname + '/SATClient/web/template.html');
+});
+/*
 function addRoute(dir) {
     let s = dir.split('/');
     s = s[s.length - 1];
     console.log(dir);
     console.log(s);
     console.log(dir.substring(0, dir.length - s.length - 1));
+    
     router.get('/' + dir.substring(0, dir.length - s.length - 1), function (req, res) {
         res.sendFile(__dirname + '/SATClient/web/template.html');
     });
 }
+*/
 
 //Gets called when new client connects
 io.on('connection', function (socket) {

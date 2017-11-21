@@ -19,14 +19,11 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Compile Include="SATClient\public\Nothing.js" />
-    <Compile Include="SATClient\public\SocketCom.js">
+    <Compile Include="SATClient\web\home.js" />
+    <Compile Include="SATClient\web\SocketCom.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SATClient\routes\Nothing.js">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SATClient\web\home.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TestModule.js">
@@ -35,9 +32,16 @@
     <Content Include="package.json" />
     <Content Include="process.json" />
     <Compile Include="index.js" />
-    <Content Include="SATClient\web\404.html">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="SATClient\web\404.html" />
+    <Content Include="SATClient\web\Classes\addclass.html" />
+    <Content Include="SATClient\web\Classes\class.html" />
+    <Content Include="SATClient\public\CSS\style.css" />
+    <Content Include="SATClient\public\CSS\vendor.css" />
+    <Content Include="SATClient\web\login.html" />
+    <Content Include="SATClient\web\Users\adduser.html" />
+    <Content Include="SATClient\web\Users\edituser.html" />
+    <Content Include="SATClient\web\Users\userdetails.html" />
+    <Content Include="SATClient\web\Users\users.html" />
     <Content Include="SATClient\web\home.html">
       <SubType>Code</SubType>
     </Content>
@@ -45,10 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SATClient\" />
+    <Folder Include="SATClient\public\javascript\" />
+    <Folder Include="SATClient\web\Classes\" />
+    <Folder Include="SATClient\public\CSS\" />
+    <Folder Include="SATClient\web\Users\" />
     <Folder Include="SATClient\web\" />
     <Folder Include="SATClient\routes\" />
     <Folder Include="SATClient\public\" />
-    <Folder Include="SATClient\web\Users\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
