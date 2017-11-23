@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
+    <h1 class="display-4 mb-4">{{ classGroup.name }}</h1>
+    <div class="d-flex justify-content-between align-items w-100 mb-3">
+        <select type="text" name="sessions" class="form-control">
+            <option></option>
+        </select>
+    </div>
+    <table class="table table-bordered">
+        <thead class="thead-default">
+            <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Phone</th>
+                <th>Present</th>
+            </tr>
+        </thead>
+        <tbody class="align-items-middle">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mb-5" style="width: 600px;">
+        <button class="btn btn-default text-xs-right float-left">Save</button>
+        <button class="btn btn-default text-xs-right float-right">Change all to present</button>
+    </div>
 </body>
 </html>

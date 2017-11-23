@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,6 +8,41 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
+    <div class="d-flex flex-column align-items-center container">
+        <h1 class="display-4">Add a User</h1>
+        <section class="row w-100 d-flex align-items-center flex-column">
+            <form @submit.prevent="addUser" class="d-flex flex-column w-100 mb-3">
+                <fieldset class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="First Name" class="form-control"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="Last Name" class="form-control"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="Email" class="form-control"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Mobile</label>
+                    <input type="text" name="Mobile" class="form-control"/>
+                </fieldset>
+                <fieldset class="form-inline">
+                    <label>User ID</label>
+                    <span class="form-inline">
+                        <select type="text" name="userType" class="form-control w-25">
+                            <option value="student">Student</option>
+                            <option value="staff">Staff</option>
+                        </select>
+                        <input type="text" name="studentId" class="form-control w-75"/>
+                        <input type="text" name="staffId" class="form-control w-75"/>
+                    </span>
+                </fieldset>
+                <br>
+                <button type="submit" class="submit btn btn-default mb-5">Submit</button>
+            </form>
+        </section>
+    </div>
 </body>
 </html>

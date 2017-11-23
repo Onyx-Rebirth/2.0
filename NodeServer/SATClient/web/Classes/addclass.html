@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,6 +21,81 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
+    <div class="d-flex flex-column align-items-center container">
+        <!-- Location popup -->
+        <div id="background" style="display: none !important;" class="d-flex flex-column align-items-center">
+            <div class="location-box">
+                <form @submit.prevent="createLocation" class="d-flex align-items-center flex-column">
+                    <fieldset class="d-flex d-inline">
+                        <label>Room Name</label>
+                        <input type="text" class="form-control"></input>
+                    </fieldset>
+                    <fieldset>
+                        <label>Scanner Number</label>
+                        <input type="text" class="form-control mb-3"></input>
+                    </fieldset>
+                    <div class="d-flex d-inline">
+                        <button type="submit" class="submit btn btn-success mr-2">Add</button>
+                        <button type="button" class="submit btn btn-default">Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Content start -->
+        <h1 class="display-4">Add a Class</h1>
+        <section class="row w-100 d-flex align-items-center flex-column">
+            <form @submit.prevent="addClass" class="d-flex flex-column w-100 mb-3">
+                <fieldset class="form-group">
+                    <label>Class Name</label>
+                    <input type="text" name="Class Name" class="form-control"/>
+                </fieldset>
+                <fieldset class="form-group w-50 align-self-center">
+                    <label>Day</label>
+                    <select input="text" name="Days" class="form-control">
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                </fieldset>
+                <div class="d-flex d-inline">
+                    <fieldset class="form-group w-50">
+                        <label>Start Time</label>
+                        <input type="time" name="startTime" class="form-control"/>
+                    </fieldset>
+                    <fieldset class="form-group w-50">
+                        <label>End Time</label>
+                        <input type="time" name="endTime" class="form-control"/>
+                    </fieldset>
+                </div>
+                <div class="d-flex d-inline">
+                    <fieldset class="form-group w-50">
+                        <label>Start Date</label>
+                        <input type="date" name="endTime" class="form-control"/>
+                    </fieldset>
+                    <fieldset class="form-group w-50">
+                        <label>End Date</label>
+                        <input type="date" name="endTime" class="form-control"/>
+                    </fieldset>
+                </div>
+                <fieldset class="form-group align-self-center">
+                    <label>Location</label>
+                    <div class="d-flex d-inline">
+                        <select type="text" name="location" class="form-control form-locaton">
+                        </select>
+                        <button type="button" class="btn btn-default align-self-start">Add Location</button>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Teacher Name</label>
+                </fieldset>
+                <br>
+                <button type="submit" class="submit btn btn-default mb-5">Submit</button>
+            </form>
+        </section>
+    </div>
 </body>
 </html>

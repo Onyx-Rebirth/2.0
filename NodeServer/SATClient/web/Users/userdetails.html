@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,6 +8,38 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
+    <h1 class="display-4 mb-4">{{ `${user.firstName} ${user.lastName}` }}</h1>
+    <div class="d-flex flex-column align-items-center w-100 table-container">
+        <table class="table d-flex mb-5">
+            <thead class="w-25">
+                <tr class="d-flex flex-column">
+                    <td>User ID</td>
+                    <td>Email</td>
+                    <td>Mobile</td>
+                    <td>Staff ID</td>
+                    <td>Student ID</td>
+                </tr>
+            </thead>
+            <tbody class="w-75">
+                <tr class="d-flex flex-column">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div v-if="user.cards.length" class="align-self-start w-100">
+            <h3 class="display-4 mb-3">Card</h3>
+            <ul class="list-group">
+                <li class="list-group-item"></li>
+            </ul>
+        </div>
+        <div class="d-flex d-inline">
+            <button>Edit</button>
+            <button>Back</button>
+        </div>
+    </div>
 </body>
 </html>

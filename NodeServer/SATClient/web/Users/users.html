@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,6 +8,49 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
+    <div class="container d-flex flex-column">
+        <h1 class="display-4 align-self-center">All Users</h1>
+        <div class="content-row">
+            <alert ></alert>
+            
+            <button tag="button" class="btn btn-default">Add User</button>
+            <button id="btn-Delete" tag="button" class="btn btn-danger float-right" data-toggle="modal" data-target=".bs-example-modal-sm" disabled>Delete Selected</button>
+        </div>
+        <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a>Are you sure?</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" data-dismiss="modal">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered mb-5">
+            <thead class="thead-default">
+                <tr>
+                    <th>ID</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="u in users">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="checkbox" class="align-self-center" :id="u.userId" @click="toggleCheckbox(u.userId), btnDisable()" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
