@@ -16,26 +16,34 @@ let io = require('socket.io')(server);
 let port = 80;
 let router = express.Router();
 
-//Location of files the client uses
-app.use(express.static(__dirname + '/node_modules'));
-app.use(express.static(__dirname + '/SATClient'));
+//Create view engine
+app.set('view engine', 'ejs');
 
-router.use(function (req, res) {
-    res.sendFile(__dirname + '/SATClient/web/template.html');
-});
-/*
-function addRoute(dir) {
-    let s = dir.split('/');
-    s = s[s.length - 1];
-    console.log(dir);
-    console.log(s);
-    console.log(dir.substring(0, dir.length - s.length - 1));
-    
-    router.get('/' + dir.substring(0, dir.length - s.length - 1), function (req, res) {
-        res.sendFile(__dirname + '/SATClient/web/template.html');
+//Location of files the client uses
+app.use(express.static('./node_modules'));
+app.use(express.static('./SATClient'));
+
+// Routes
+getRoute('/',               'home');
+getRoute('/home',           'home');
+getRoute('/users',          'users/users');
+getRoute('/users/:id',      'users/userDetails');
+getRoute('/users/add',      'users/addUser');
+getRoute('/users/:id/edit', 'users/editUser');
+getRoute('/class/add',      'classes/addClass');
+getRoute('/class/:id',      'classes/classDetails');
+
+function getRoute(route, path) {
+    var title = path;
+    var id = 1;
+    app.get(route, function (req, res, next) {
+        //res.set('Content-Type', 'application/javascript');
+        res.render('./../SATClient/views/' + path + '.ejs', {
+            title: title,
+            id: id
+        });
     });
 }
-*/
 
 //Gets called when new client connects
 io.on('connection', function (socket) {
@@ -49,7 +57,9 @@ io.on('connection', function (socket) {
     });
 });
 
-app.use('/',router);
+app.use(function (req, res, next) {
+    res.render(__dirname + '/SATClient/web/404.html');
+});
 
 //Hosts the server on port
 server.listen(port);
