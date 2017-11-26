@@ -1,13 +1,15 @@
 button {
   cursor: pointer;
 }
-
-.navbar-inverse .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.67);
+table {
+    width: auto;
 }
-
+.navbar-inverse .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.67);
+}
 .container {
-  max-width: 400px;
+    float: none;
+    margin: 0 auto;
 }
 h1 {
   -ms-flex-item-align: start;
@@ -23,6 +25,7 @@ img {
 
 .table-container {
   max-width: 600px;
+  width: auto;
 }
 .table-bordered th, .table-bordered td {
   border: none;
