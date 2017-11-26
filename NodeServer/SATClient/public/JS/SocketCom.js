@@ -35,17 +35,29 @@ let qEvent = function(call) {
     }
 }
 
-function DBRequest(table, para, callback) {
+function DBGet(table, para, callback) {
+    console.log("Getting");
     listen('response', callback);
-    sendMessage('request', {table: table, para: para});
+    sendMessage('get', {table: table, para: para});
 }
 
+/**
+ * @param {string} table DB table to post to
+ * @param {data} data The item to add
+ * @param {function} callback runs when the server responds
+ */
+function DBPost(table, data, callback) {
+    console.log("Posting");
+    listen('response', callback);
+    sendMessage('post', { table: table, data: data});
+};
+
 function listen(type, callback) {
-    console.log("Listening for; " + type);
+    console.log("Listening for; " + JSON.stringify(type));
     qEvent(function() { socket.on(type, callback) });
 }
 
 function sendMessage(type, message) {
-    console.log("Sending message; " + message);
+    console.log("Sending message; " + JSON.stringify(message));
     qEvent(function() { socket.emit(type, message) });
 };
