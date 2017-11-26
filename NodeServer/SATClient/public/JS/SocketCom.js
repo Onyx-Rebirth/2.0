@@ -1,9 +1,10 @@
 ﻿let socket;
-let ip = 'http://127.0.0.10';
+let ip = window.location.hostname;
 let loaded = false;
 let callStack = [];
 
 window.onload = function init() {
+    //I THINK the setTimeout is no longer required, but I'll test that later(TM)
     setTimeout(function () {
         loadScript(function () {
             loaded = true;
