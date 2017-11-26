@@ -3,7 +3,7 @@ let ip = 'http://127.0.0.10';
 let loaded = false;
 let callStack = [];
 
-(function init() {
+window.onload = function init() {
     setTimeout(function () {
         loadScript(function () {
             loaded = true;
@@ -14,7 +14,7 @@ let callStack = [];
             }
         });
     },1);
-})();
+};
 
 let loadScript = function(callback) {
     //Add the socket.io script to the HTML
@@ -33,6 +33,11 @@ let qEvent = function(call) {
     } else {
         call();
     }
+}
+
+function DBRequest(table, para, callback) {
+    listen('response', callback);
+    sendMessage('request', {table: table, para: para});
 }
 
 function listen(type, callback) {

@@ -1,7 +1,7 @@
 // Get Method
-function getById(table, id) {
+function getById(table, id, callback) {
     let getUrl = 'http://onyx2.azurewebsites.net/api/' + table + '/' + id;
-    let response = 'none';
+    let response;
 
     require('http').get(getUrl, function (res) {
         let body = '';
@@ -12,8 +12,10 @@ function getById(table, id) {
 
         res.on('end', function () {
             response = JSON.parse(body);
+            console.log("e" + response);
+            callback(response);
         });
-
+        
     }).on('error', function (e) {
         console.log("Error: ", e);
     });
@@ -86,10 +88,10 @@ io.on('connection', function (socket) {
     console.log('Client has connected; ' + socket.id);
 
     //Example listener
-    socket.on('potato', function (data) {
+    socket.on('request', function (data) {
         console.log("[" + socket.id + "]; " + data);
         //Broadcasts to all connected users
-        io.emit('cake','a');
+        getById(data.table, data.para, function (d) {socket.emit('response',d)});
     });
 });
 
@@ -98,3 +100,5 @@ getRoute('/*', '404');
 
 //Hosts the server on port
 server.listen(port);
+
+getById('users', '1', function (d) {console.log(d)});

@@ -8,5 +8,10 @@
 <body>
     <% include ../partials/nav %> <!-- Navbar -->
     <h1><%= title %></h1>
+	<script>
+		DBRequest('users','1', function(data) {
+			console.log(JSON.stringify(data));
+		});
+	</script>
 </body>
 </html>
