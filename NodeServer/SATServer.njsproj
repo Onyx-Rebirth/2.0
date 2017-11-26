@@ -28,7 +28,7 @@
     <Compile Include="SATClient\routes\Nothing.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestModule.js">
+    <Compile Include="custom_modules\DBHandler.js">
       <SubType>Code</SubType>
     </Compile>
     <Content Include="package.json" />
@@ -54,6 +54,7 @@
     <Content Include="SATClient\views\Users\users.ejs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="custom_modules\" />
     <Folder Include="SATClient\" />
     <Folder Include="SATClient\public\JS\" />
     <Folder Include="SATClient\views\Classes\" />

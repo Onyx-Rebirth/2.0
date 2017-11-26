@@ -1,30 +1,5 @@
-// Get Method
-function getById(table, id, callback) {
-    let getUrl = 'http://onyx2.azurewebsites.net/api/' + table + '/' + id;
-    let response;
-
-    require('http').get(getUrl, function (res) {
-        let body = '';
-            
-        res.on('data', function (chunk) {
-            body += chunk;
-        });
-
-        res.on('end', function () {
-            response = JSON.parse(body);
-            console.log("e" + response);
-            callback(response);
-        });
-        
-    }).on('error', function (e) {
-        console.log("Error: ", e);
-    });
-}
-
-
-
 //Custom module import
-//let t = require('./TestModule.js');
+let DBH = require('./custom_modules/DBHandler.js');
 //Express, to serve the webpages
 let express = require('express');
 var request = require('request');
@@ -87,11 +62,11 @@ router.get('/api/users/1', function (req, res, next) {
 io.on('connection', function (socket) {
     console.log('Client has connected; ' + socket.id);
 
-    //Example listener
     socket.on('request', function (data) {
         console.log("[" + socket.id + "]; " + data);
-        //Broadcasts to all connected users
-        getById(data.table, data.para, function (d) {socket.emit('response',d)});
+        DBH.getById(data.table, data.para, function (d) {
+            socket.emit('response', d)
+        });
     });
 });
 
@@ -100,5 +75,3 @@ getRoute('/*', '404');
 
 //Hosts the server on port
 server.listen(port);
-
-getById('users', '1', function (d) {console.log(d)});
