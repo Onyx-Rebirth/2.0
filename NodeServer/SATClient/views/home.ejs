@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <% include ./partials/head %>
+    <title><%= title %></title>
+</head>
+<body>
+    <% include ./partials/nav %>
+    <div class="container">
+        <div class="table-container d-flex flex-column align-self-center">
+            <h1 class="align-self-center display-4 mb-4">Welcome, </h1>
+            <div class="alert align-self-center">
+                <alert></alert>
+            </div>
+            <div class="content-row button-row">
+                <a href="/class/add" class="btn btn-default align-self-start mb-3">Add Class</a>
+            </div>
+            <table class="table table-bordered mb-5">
+                <thead class="thead-default">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Day</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../public/SocketCom.js"></script>
+</body>
+</html>
