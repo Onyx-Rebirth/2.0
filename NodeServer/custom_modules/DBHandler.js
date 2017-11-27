@@ -1,4 +1,4 @@
-﻿let URL = 'http://onyx2.azurewebsites.net/api/';
+﻿let URL = 'http://onyxat.azurewebsites.net/api/';
 let http = require('http');
 let request = require('request');
 
