@@ -12,48 +12,56 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <NodeExePath>
-    </NodeExePath>
+    <NodeExePath>H:\NodeInstall\node-v8.9.1-win-x64\node.exe</NodeExePath>
     <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Compile Include="SATClient\web\home.js" />
-    <Compile Include="SATClient\web\SocketCom.js">
+    <Compile Include="SATClient\APIClient.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SATClient\views\home.js" />
+    <Compile Include="SATClient\public\JS\SocketCom.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SATClient\routes\Nothing.js">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestModule.js">
+    <Compile Include="custom_modules\DBHandler.js">
       <SubType>Code</SubType>
     </Compile>
     <Content Include="package.json" />
     <Content Include="process.json" />
     <Compile Include="index.js" />
-    <Content Include="SATClient\web\404.html" />
-    <Content Include="SATClient\web\Classes\addclass.html" />
-    <Content Include="SATClient\web\Classes\class.html" />
     <Content Include="SATClient\public\CSS\style.css" />
-    <Content Include="SATClient\public\CSS\vendor.css" />
-    <Content Include="SATClient\web\login.html" />
-    <Content Include="SATClient\web\Users\adduser.html" />
-    <Content Include="SATClient\web\Users\edituser.html" />
-    <Content Include="SATClient\web\Users\userdetails.html" />
-    <Content Include="SATClient\web\Users\users.html" />
-    <Content Include="SATClient\web\home.html">
+    <Content Include="SATClient\views\404.ejs" />
+    <Content Include="SATClient\views\Classes\classDetails.ejs" />
+    <Content Include="SATClient\views\Classes\addClass.ejs" />
+    <Content Include="SATClient\views\home.ejs" />
+    <Content Include="SATClient\views\partials\head.ejs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="SATClient\web\template.html" />
+    <Content Include="SATClient\views\partials\nav.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="SATClient\views\test.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="SATClient\views\Users\addUser.ejs" />
+    <Content Include="SATClient\views\Users\editUser.ejs" />
+    <Content Include="SATClient\views\Users\userDetails.ejs" />
+    <Content Include="SATClient\views\Users\users.ejs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="custom_modules\" />
     <Folder Include="SATClient\" />
-    <Folder Include="SATClient\public\javascript\" />
-    <Folder Include="SATClient\web\Classes\" />
+    <Folder Include="SATClient\public\JS\" />
+    <Folder Include="SATClient\views\Classes\" />
     <Folder Include="SATClient\public\CSS\" />
-    <Folder Include="SATClient\web\Users\" />
-    <Folder Include="SATClient\web\" />
+    <Folder Include="SATClient\views\partials\" />
+    <Folder Include="SATClient\views\Users\" />
+    <Folder Include="SATClient\views\" />
     <Folder Include="SATClient\routes\" />
     <Folder Include="SATClient\public\" />
   </ItemGroup>
