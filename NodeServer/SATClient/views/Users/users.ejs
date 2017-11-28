@@ -9,9 +9,23 @@
     <% include ../partials/nav %> <!-- Navbar -->
     <h1><%= title %></h1>
 	<script>
-		DBRequest('users','1', function(data) {
-			console.log(JSON.stringify(data));
+		/*Example POST and GET requests
+		DBPost('users',{
+			uid: "1000",
+			fName: "Geoff",
+			lName: "Greg",
+			email: "Geoff@Greg.com.net.com",
+			mobile: "131313131313",
+			studentId: '4',
+			staffId: '55'
+		}, function() {
+			console.log("Done Post");
 		});
+		
+		DBGet('users','1000', function(data) {
+			console.log("RET; " + JSON.stringify(data));
+		});*/
+		
 	</script>
 </body>
 </html>

@@ -62,11 +62,16 @@ router.get('/api/users/1', function (req, res, next) {
 io.on('connection', function (socket) {
     console.log('Client has connected; ' + socket.id);
 
-    socket.on('request', function (data) {
-        console.log("[" + socket.id + "]; " + data);
+    socket.on('get', function (data) {
+        console.log("[" + socket.id + "]; GET; " + data);
         DBH.getById(data.table, data.para, function (d) {
             socket.emit('response', d)
         });
+    });
+
+    socket.on('post', function (data) {
+        console.log("[" + socket.id + "]; POST; " + data);
+        DBH.post(data.table, data.data, function(d) {socket.emit(d)});
     });
 });
 
