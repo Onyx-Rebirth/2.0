@@ -28,20 +28,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for(var i; i < classData.length; i++) { %>
-                    <tr>
-                        <td><%= classData[i].id %></td>
-                        <td><%= classData[i].user.fname + " " + classData[i].user.fname %></td>
-                        <td><%= classData[i].day %></td>
-                        <td><%= classData[i].startTime %></td>
-                        <td><%= classData[i].endTime %></td>
-                        <td><%= classData[i].session.location.roomNo %></td>
-                    </tr>
+                    <% if (this.classData != null && this.classData != '') { %>
+                        <% for(let i; i < this.classData.length; i++) { %>
+                            <tr>
+                                <td><%= this.classData[i].id %></td>
+                                <td><%= this.classData[i].user.fname + " " + this.classData[i].user.fname %></td>
+                                <td><%= this.classData[i].day %></td>
+                                <td><%= this.classData[i].startTime %></td>
+                                <td><%= this.classData[i].endTime %></td>
+                                <td><%= this.classData[i].session.location.roomNo %></td>
+                            </tr>
+                        <% } %>
                     <% } %>
                 </tbody>
             </table>
         </div>
     </div>
-    <script src="../public/SocketCom.js"></script>
 </body>
 </html>
+
+<script>
+    let classData;
+    DBGet('class', '', function (data) {
+        classData = data;
+        console.log(data);
+    });
+</script>

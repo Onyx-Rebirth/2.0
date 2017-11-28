@@ -1,10 +1,10 @@
-﻿let URL = 'http://onyx2.azurewebsites.net/api/';
+﻿let URL = 'http://onyxat.azurewebsites.net/api/';
 let http = require('http');
 let request = require('request');
 
 //Get Method
 this.getById = function(table, id, callback) {
-    let getUrl = URL + table + '/' + id;
+    let getUrl = URL + table + id != '' ? '/' + id : '';
     let response;
 
     http.get(getUrl, function (res) {
